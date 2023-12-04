@@ -5,16 +5,9 @@ info:
   title: GetNodeNotificationPeriodList
   contact:
     email: dragos.salagean@ingka.com
-basePath: /om/order-management
 tags:
 - name: getNodeNotificationPeriodList
   description: NodeNotificationPeriodList for organization
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
 paths:
   /{region}/getNodeNotificationPeriodList:
     post:
