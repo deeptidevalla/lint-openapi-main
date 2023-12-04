@@ -8,6 +8,13 @@ info:
 tags:
 - name: getNodeNotificationPeriodList
   description: NodeNotificationPeriodList for organization
+servers:
+  - url: https://api.ingka.cte.ikeadt.com/om/order-management/eu/get-order-info
+    description: API Gateway DEV 
+  - url: https://api.ingka.ikea.com/om/order-management/eu/get-order-info
+    description: API Gateway PROD
+  - url: https://api.ingka.ppe.ikeadt.com/om/order-management/eu/get-order-info
+    description: API Gateway STAGE
 paths:
   /{region}/getNodeNotificationPeriodList:
     post:
