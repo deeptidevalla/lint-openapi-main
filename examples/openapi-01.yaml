@@ -26,17 +26,12 @@ paths:
       - Get Notification Period List
       operationId: getNodeNotificationPeriodList
       parameters:
-      - name: region
-        in: path
-        required: true
-        schema:
-            type: string
       - name: Authorization
         in: header
         required: true
         schema:
             type: string
-      - in: path
+      - in: region
         name: Notification Period List
         description: Input to Notification Period List
         required: true
