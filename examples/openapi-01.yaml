@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/definitions/errorResponse'
-components:
+definitions:
   errorResponse:
     type: object
     properties:
