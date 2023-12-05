@@ -59,6 +59,10 @@ definitions:
   errorResponse:
     type: object
     properties:
+      type:
+          type: string
+      title:
+          type: string   
       error:
         $ref: '#/definitions/errorResponse_error'
   errorResponse_error:
