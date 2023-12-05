@@ -28,7 +28,7 @@ paths:
       parameters:
       - name: region
         in: path
-        required: true
+        required: true 
       - name: Authorization
         in: header
         required: true
