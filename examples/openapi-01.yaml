@@ -36,7 +36,7 @@ paths:
         required: true
         schema:
             type: string
-      - in: body
+      - in: path
         name: Notification Period List
         description: Input to Notification Period List
         required: true
@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/definitions/errorResponse'
-definitions:
+components:
   errorResponse:
     type: object
     properties:
