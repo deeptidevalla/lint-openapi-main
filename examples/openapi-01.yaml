@@ -56,192 +56,192 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResponse'
 components:
-  schemas:
+  schemas:   
     errorResponse:
-    type: object
-    properties:
-      type:
-          type: string
-      title:
-          type: string   
-      error:
-        $ref: '#/components/schemas/errorResponse_error'
-  errorResponse_error:
-    type: object
-    required:
-    - errorCode
-    - errorDescription
-    properties:
-      errorCode:
-        type: string
-        format: maximum length:40
-        description: Unique identifier of the error.
-      errorDescription:
-        type: string
-        format: maximum length:40
-        description: Description of the error. 
-  getNodeNotificationPeriodList:
-    type: object
-    properties:
-      EffectiveFromDate:
-        type: string
-        format: date
-        example: "2020-07-07"
-        description: "The date that this notification time is applicable from."
-      EffectiveToDate:
-        type: string
-        format: date
-        example: "2023-07-07"
-        description: "The date that this notification time is applicable to."
-      OrganizationCode:
-        type: string
-        example: "STO.632"
-        format: "maximum length: 24"
-        description: "The organization for which this notification period is for."
-   
-    example:
-      EffectiveFromDate: "2023-01-01"
-      EffectiveToDate: "2023-03-01"
-      OrganizationCode: "STO.895"
-  
-  nodeNotificationPeriodListResponse:
-   type: object
-   properties:
-    TotalNumberOfRecords:
-     type: integer
-     example: 1
-    NodeNotificationPeriod:
-      $ref: "#/components/schemas/nodeNotificationPeriod"
-     
-  nodeNotificationPeriod:
-    type: array
-    items:
-      $ref: "#/components/schemas/nodeNotificationPeriod_inner"
-  nodeNotificationPeriod_inner:
-   type: object
-   properties:
-            EffectiveFromDate:
-              type: string
-              example: "2020-07-07"
-              format: "maximum length: 100"
-              description: "The date that this notification time is applicable from."
-            EffectiveToDate:
-              type: string
-              example: "2023-07-07"
-              description: "The date that this notification time is applicable to."
-            IsCurrentlyInEffect:
-              type: string
-              example: "Y"
-              description: "Determines whether this NodeNotificationPeriod is in effect for the current date. Values: Y/N"
-            OrganizationCode:
-              type: string
-              example: "STO.632"
-              format: "maximum length: 24"
-              description: "The organization for which this notification period is for."
-            NodeNotificationList:
-              $ref: "#/components/schemas/NodeNotificationList"
-  NodeNotificationList:
-   type: object
-   properties:
-    TotalNumberOfRecords:
-        type: integer
-        example: 1
-    NodeNotification:
-     $ref: "#/components/schemas/NodeNotification"
-  NodeNotification:
-   type: array
-   items:
-      $ref: "#/components/schemas/NodeNotification_inner"
-  NodeNotification_inner:
-    type: object
-    properties:
-     AdvanceNotificationTime:
-      type: "integer"
-      example: "0.00"
-      format: "decimal (minimum value: 0 total number of digits: 9 fraction digits: 4)" 
-      description: "The number of days before which the ship node needs notification of an impending receipt or shipment. Default: 0."
-     LevelOfService: 
-      type: string
-      example: "SGR00000873"
-      format: "maximum length: 40"
-      description: "The level of service that this node notification is applicable for."
-     MaximumNotificationTime:
-      type: "integer"
-      example: "50.00"
-      format: "decimal (minimum value: 0  total number of digits: 14  fraction digits: 4)" 
-      description: "The number of hours based on calendar before which the ship node needs notification of an impending receipt or shipment. Default: 0."
-     MinNotificationTime:
-      type: "integer"
-      example: "50.00"
-      format: "  nonNegativeInteger (total number of digits: 5)" 
-      description: "The number of hours based on shipping calendar before which the communication to ship the order to the shipping node or supplier should be made. This field is used to determine the earliest ship date on the line. Default: 0."
-    
-     NodeNotificationScheduleList:
       type: object
-      properties: 
-       TotalNumberOfRecords:
-        type: integer
-        example: 1
-       NodeNotificationSchedule:
-        $ref: "#/components/schemas/NodeNotificationSchedule"
+      properties:
+        type:
+            type: string
+        title:
+            type: string   
+        error:
+          $ref: '#/components/schemas/errorResponse_error'
+    errorResponse_error:
+      type: object
+      required:
+      - errorCode
+      - errorDescription
+      properties:
+        errorCode:
+          type: string
+          format: maximum length:40
+          description: Unique identifier of the error.
+        errorDescription:
+          type: string
+          format: maximum length:40
+          description: Description of the error. 
+    getNodeNotificationPeriodList:
+      type: object
+      properties:
+        EffectiveFromDate:
+          type: string
+          format: date
+          example: "2020-07-07"
+          description: "The date that this notification time is applicable from."
+        EffectiveToDate:
+          type: string
+          format: date
+          example: "2023-07-07"
+          description: "The date that this notification time is applicable to."
+        OrganizationCode:
+          type: string
+          example: "STO.632"
+          format: "maximum length: 24"
+          description: "The organization for which this notification period is for."
      
-  NodeNotificationSchedule:
-   type: array
-   properties:
-    totalNumberOfRecords:
-        type: integer
-        example: 1
-   items:
-      $ref: "#/components/schemas/NodeNotificationSchedule_inner"
-  
-  NodeNotificationSchedule_inner:    
-   type: object
-   properties:
-    MondayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Mondays. Default: N."
-    TuesdayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Tuesdays. Default: N."   
-    WednesdayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Wednesdays. Default: N."   
-    ThursdayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Thursdays. Default: N."
-    FridayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Fridays. Default: N."   
-    SaturdayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Saturdays. Default: N."
-    SundayValid:
-       type: "string"
-       format: "maximum length: 1"
-       example: "Y"
-       description: "Determines if this time is valid for Sundays. Default: N."
-    NotificationTime:
-       type: "string"
-       format: "dateTime"
-       example: "08:10:00"
-       description: "The time of notificaiton available for the ship node notification."
+      example:
+        EffectiveFromDate: "2023-01-01"
+        EffectiveToDate: "2023-03-01"
+        OrganizationCode: "STO.895"
+    
+    nodeNotificationPeriodListResponse:
+     type: object
+     properties:
+      TotalNumberOfRecords:
+       type: integer
+       example: 1
+      NodeNotificationPeriod:
+        $ref: "#/components/schemas/nodeNotificationPeriod"
        
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    nodeNotificationPeriod:
+      type: array
+      items:
+        $ref: "#/components/schemas/nodeNotificationPeriod_inner"
+    nodeNotificationPeriod_inner:
+     type: object
+     properties:
+              EffectiveFromDate:
+                type: string
+                example: "2020-07-07"
+                format: "maximum length: 100"
+                description: "The date that this notification time is applicable from."
+              EffectiveToDate:
+                type: string
+                example: "2023-07-07"
+                description: "The date that this notification time is applicable to."
+              IsCurrentlyInEffect:
+                type: string
+                example: "Y"
+                description: "Determines whether this NodeNotificationPeriod is in effect for the current date. Values: Y/N"
+              OrganizationCode:
+                type: string
+                example: "STO.632"
+                format: "maximum length: 24"
+                description: "The organization for which this notification period is for."
+              NodeNotificationList:
+                $ref: "#/components/schemas/NodeNotificationList"
+    NodeNotificationList:
+     type: object
+     properties:
+      TotalNumberOfRecords:
+          type: integer
+          example: 1
+      NodeNotification:
+       $ref: "#/components/schemas/NodeNotification"
+    NodeNotification:
+     type: array
+     items:
+        $ref: "#/components/schemas/NodeNotification_inner"
+    NodeNotification_inner:
+      type: object
+      properties:
+       AdvanceNotificationTime:
+        type: "integer"
+        example: "0.00"
+        format: "decimal (minimum value: 0 total number of digits: 9 fraction digits: 4)" 
+        description: "The number of days before which the ship node needs notification of an impending receipt or shipment. Default: 0."
+       LevelOfService: 
+        type: string
+        example: "SGR00000873"
+        format: "maximum length: 40"
+        description: "The level of service that this node notification is applicable for."
+       MaximumNotificationTime:
+        type: "integer"
+        example: "50.00"
+        format: "decimal (minimum value: 0  total number of digits: 14  fraction digits: 4)" 
+        description: "The number of hours based on calendar before which the ship node needs notification of an impending receipt or shipment. Default: 0."
+       MinNotificationTime:
+        type: "integer"
+        example: "50.00"
+        format: "  nonNegativeInteger (total number of digits: 5)" 
+        description: "The number of hours based on shipping calendar before which the communication to ship the order to the shipping node or supplier should be made. This field is used to determine the earliest ship date on the line. Default: 0."
+      
+       NodeNotificationScheduleList:
+        type: object
+        properties: 
+         TotalNumberOfRecords:
+          type: integer
+          example: 1
+         NodeNotificationSchedule:
+          $ref: "#/components/schemas/NodeNotificationSchedule"
+       
+    NodeNotificationSchedule:
+     type: array
+     properties:
+      totalNumberOfRecords:
+          type: integer
+          example: 1
+     items:
+        $ref: "#/components/schemas/NodeNotificationSchedule_inner"
+    
+    NodeNotificationSchedule_inner:    
+     type: object
+     properties:
+      MondayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Mondays. Default: N."
+      TuesdayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Tuesdays. Default: N."   
+      WednesdayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Wednesdays. Default: N."   
+      ThursdayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Thursdays. Default: N."
+      FridayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Fridays. Default: N."   
+      SaturdayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Saturdays. Default: N."
+      SundayValid:
+         type: "string"
+         format: "maximum length: 1"
+         example: "Y"
+         description: "Determines if this time is valid for Sundays. Default: N."
+      NotificationTime:
+         type: "string"
+         format: "dateTime"
+         example: "08:10:00"
+         description: "The time of notificaiton available for the ship node notification."
+         
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
 security:
   - bearerAuth: []
