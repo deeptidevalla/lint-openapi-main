@@ -237,11 +237,3 @@ components:
          format: "dateTime"
          example: "08:10:00"
          description: "The time of notificaiton available for the ship node notification."
-         
-    securitySchemes:
-      bearerAuth:
-        type: http
-        scheme: bearer
-        bearerFormat: JWT
-security:
-  - bearerAuth: []
