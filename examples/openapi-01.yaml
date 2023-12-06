@@ -41,21 +41,21 @@ paths:
         description: Input to Notification Period List
         required: true
         schema:
-          $ref: '#/definitions/getNodeNotificationPeriodList'
+          $ref: '#/components/getNodeNotificationPeriodList'
       responses:
         "200":
           description: "Node Notification Period List for Organization"
           content:
             application/json:
               schema:
-                $ref: '#/definitions/nodeNotificationPeriodListResponse'
+                $ref: '#/components/nodeNotificationPeriodListResponse'
         "400":
           description: Bad request
           content:
             application/problem+json:
               schema:
-                $ref: '#/definitions/errorResponse'
-definitions:
+                $ref: '#/components/errorResponse'
+components:
   errorResponse:
     type: object
     properties:
@@ -64,7 +64,7 @@ definitions:
       title:
           type: string   
       error:
-        $ref: '#/definitions/errorResponse_error'
+        $ref: '#/components/errorResponse_error'
   errorResponse_error:
     type: object
     required:
@@ -110,12 +110,12 @@ definitions:
      type: integer
      example: 1
     NodeNotificationPeriod:
-      $ref: "#/definitions/nodeNotificationPeriod"
+      $ref: "#/components/nodeNotificationPeriod"
      
   nodeNotificationPeriod:
     type: array
     items:
-      $ref: "#/definitions/nodeNotificationPeriod_inner"
+      $ref: "#/components/nodeNotificationPeriod_inner"
   nodeNotificationPeriod_inner:
    type: object
    properties:
@@ -138,7 +138,7 @@ definitions:
               format: "maximum length: 24"
               description: "The organization for which this notification period is for."
             NodeNotificationList:
-              $ref: "#/definitions/NodeNotificationList"
+              $ref: "#/components/NodeNotificationList"
   NodeNotificationList:
    type: object
    properties:
@@ -146,11 +146,11 @@ definitions:
         type: integer
         example: 1
     NodeNotification:
-     $ref: "#/definitions/NodeNotification"
+     $ref: "#/components/NodeNotification"
   NodeNotification:
    type: array
    items:
-      $ref: "#/definitions/NodeNotification_inner"
+      $ref: "#/components/NodeNotification_inner"
   NodeNotification_inner:
     type: object
     properties:
@@ -182,7 +182,7 @@ definitions:
         type: integer
         example: 1
        NodeNotificationSchedule:
-        $ref: "#/definitions/NodeNotificationSchedule"
+        $ref: "#/components/NodeNotificationSchedule"
      
   NodeNotificationSchedule:
    type: array
@@ -191,7 +191,7 @@ definitions:
         type: integer
         example: 1
    items:
-      $ref: "#/definitions/NodeNotificationSchedule_inner"
+      $ref: "#/components/NodeNotificationSchedule_inner"
   
   NodeNotificationSchedule_inner:    
    type: object
