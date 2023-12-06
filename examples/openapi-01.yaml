@@ -41,22 +41,23 @@ paths:
         description: Input to Notification Period List
         required: true
         schema:
-          $ref: '#/components/getNodeNotificationPeriodList'
+          $ref: '#/components/schemas/getNodeNotificationPeriodList'
       responses:
         "200":
           description: "Node Notification Period List for Organization"
           content:
             application/json:
               schema:
-                $ref: '#/components/nodeNotificationPeriodListResponse'
+                $ref: '#/components/schemas/nodeNotificationPeriodListResponse'
         "400":
           description: Bad request
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/errorResponse'
+                $ref: '#/components/schemas/errorResponse'
 components:
-  errorResponse:
+  schemas:
+    errorResponse:
     type: object
     properties:
       type:
@@ -64,7 +65,7 @@ components:
       title:
           type: string   
       error:
-        $ref: '#/components/errorResponse_error'
+        $ref: '#/components/schemas/errorResponse_error'
   errorResponse_error:
     type: object
     required:
@@ -110,12 +111,12 @@ components:
      type: integer
      example: 1
     NodeNotificationPeriod:
-      $ref: "#/components/nodeNotificationPeriod"
+      $ref: "#/components/schemas/nodeNotificationPeriod"
      
   nodeNotificationPeriod:
     type: array
     items:
-      $ref: "#/components/nodeNotificationPeriod_inner"
+      $ref: "#/components/schemas/nodeNotificationPeriod_inner"
   nodeNotificationPeriod_inner:
    type: object
    properties:
@@ -138,7 +139,7 @@ components:
               format: "maximum length: 24"
               description: "The organization for which this notification period is for."
             NodeNotificationList:
-              $ref: "#/components/NodeNotificationList"
+              $ref: "#/components/schemas/NodeNotificationList"
   NodeNotificationList:
    type: object
    properties:
@@ -146,11 +147,11 @@ components:
         type: integer
         example: 1
     NodeNotification:
-     $ref: "#/components/NodeNotification"
+     $ref: "#/components/schemas/NodeNotification"
   NodeNotification:
    type: array
    items:
-      $ref: "#/components/NodeNotification_inner"
+      $ref: "#/components/schemas/NodeNotification_inner"
   NodeNotification_inner:
     type: object
     properties:
@@ -182,7 +183,7 @@ components:
         type: integer
         example: 1
        NodeNotificationSchedule:
-        $ref: "#/components/NodeNotificationSchedule"
+        $ref: "#/components/schemas/NodeNotificationSchedule"
      
   NodeNotificationSchedule:
    type: array
@@ -191,7 +192,7 @@ components:
         type: integer
         example: 1
    items:
-      $ref: "#/components/NodeNotificationSchedule_inner"
+      $ref: "#/components/schemas/NodeNotificationSchedule_inner"
   
   NodeNotificationSchedule_inner:    
    type: object
